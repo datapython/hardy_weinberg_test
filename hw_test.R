@@ -52,7 +52,7 @@ server <-function(input,output) {
     q2 = (dat1[5])^2;
     h2 = 1 - p2 - q2;  
     
-    print(chisq.test(dat1), p =c(p2, h2, q2))
+    print(chisq.test(dat1[1:3], p =c(p2, h2, q2)))
   })
   
   # Dynamic UI
