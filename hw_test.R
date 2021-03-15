@@ -45,12 +45,14 @@ server <-function(input,output) {
     dat()
   })
   
-  # chisq test 
+  # chisq good of fit test 
   output$chisqTest <- renderPrint({
-    dat1 <- as.data.frame(dat()[1:3, 2:3], row.names=c('dom', 'het', 'rec'))
-    dat1 <- dat1 %>%
-              mutate_all(as.numeric)
-    print(chisq.test(dat1))
+    dat1 <- as.numeric(as.character(dat()[1:5, 2]))  
+    p2 = (dat1[4])^2;
+    q2 = (dat1[5])^2;
+    h2 = 1 - p2 - q2;  
+    
+    print(chisq.test(dat1), p =c(p2, h2, q2))
   })
   
   # Dynamic UI
